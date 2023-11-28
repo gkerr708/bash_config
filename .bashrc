@@ -136,6 +136,9 @@ alias install='sudo nala install'
 alias multitail='multitail --no-repeat -c'
 alias freshclam='sudo freshclam'
 alias nv='nvim .'
+alias nvimconf='nvim ~/.config/nvim'
+alias bashrc='nvim ~/mybash'
+
 
 # Change directory aliases
 alias home='cd ~'
