@@ -104,6 +104,11 @@ alias da='date "+%Y-%m-%d %A %T %Z"'
 alias python='python3'
 alias pip='pip3'
 
+# Virtual Env
+alias ve='virtualenv'
+alias activateve='source ./bin/activate'
+
+
 # Git 
 alias ga='git add .'
 alias gc='git commit -m "Laptop Commit"'
