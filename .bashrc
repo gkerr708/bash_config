@@ -100,6 +100,10 @@ alias hlp='less ~/.bashrc_help'
 # alias to show the date
 alias da='date "+%Y-%m-%d %A %T %Z"'
 
+# TheFuck
+eval $(thefuck --alias)
+
+
 # Python
 alias python='python3'
 alias pip='pip3'
@@ -116,6 +120,7 @@ alias gp='git push'
 alias gb='git branch'
 alias gf='git fetch'
 alias gm='git merge'
+alias gl='git log --graph --decorate --oneline'
 
 # Alias's to modified commands
 alias cp='cp -i'
