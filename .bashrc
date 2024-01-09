@@ -110,7 +110,7 @@ alias pip='pip3'
 
 # Virtual Env
 alias ve='python3 -m venv venv'
-alias activateve='source ./bin/activate'
+alias activateve='source ./venv/bin/activate'
 
 
 # Git 
