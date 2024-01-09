@@ -109,7 +109,7 @@ alias python='python3'
 alias pip='pip3'
 
 # Virtual Env
-alias ve='virtualenv'
+alias ve='python3 -m venv venv'
 alias activateve='source ./bin/activate'
 
 
