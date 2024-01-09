@@ -115,7 +115,7 @@ alias activateve='source ./venv/bin/activate'
 
 # Git 
 alias ga='git add .'
-alias gc='git commit -m "Laptop Commit"'
+alias gc='git commit -m "Default Message"'
 alias gp='git push'
 alias gb='git branch'
 alias gf='git fetch'
