@@ -108,7 +108,7 @@ eval $(thefuck --alias)
 alias python='python3'
 alias pip='pip3'
 
-# Virtual Env
+# venv (virtual environment stuff)
 alias ve='python3 -m venv venv'
 alias activateve='source ./venv/bin/activate'
 
