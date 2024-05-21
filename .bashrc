@@ -68,20 +68,6 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-#######################################################
-# MACHINE SPECIFIC ALIAS'S
-#######################################################
-
-# Alias's for SSH
-# alias SERVERNAME='ssh YOURWEBSITE.com -l USERNAME -p PORTNUMBERHERE'
-
-# Alias's to change the directory
-alias web='cd /var/www/html'
-
-# Alias's to mount ISO files
-# mount -o loop /home/NAMEOFISO.iso /home/ISOMOUNTDIR/
-# umount /home/NAMEOFISO.iso
-# (Both commands done as root only.)
 
 #######################################################
 # GENERAL ALIAS'S
@@ -91,11 +77,33 @@ alias web='cd /var/www/html'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+# Compile c++ code with g++
+alias cmake='cmake -S . -B build && cmake --build build'
+
+# Alias for running a compiled C++ file
+alias cpp='function _run_cpp_file() {
+    local filename="$1"
+    local basename="${filename%.cpp}"
+    ./build/"$basename"
+}; _run_cpp_file'
+
+# Alias to copy the path of the current directory
+alias ydir='echo -n "$(pwd)" | xclip -selection clipboard'
+
+# Alias to copy the path of a specified file
+alias yfile='function _copyfile() { echo -n "$(pwd)/$1" | xclip -selection clipboard; }; _copyfile'
+
+# C++ configuration
+export LD_LIBRARY_PATH=/opt/pylon/lib:$LD_LIBRARY_PATH
+
 # Edit this .bashrc file
 alias bashrc='nvim ~/.bashrc'
 
 # Show help for this .bashrc file
 alias hlp='less ~/.bashrc_help'
+
+# Runs the main df-gen script
+alias fdgen='python3  ~/lab/fd-gen/controller/python_fixed/main.py'
 
 # alias to show the date
 alias da='date "+%Y-%m-%d %A %T %Z"'
@@ -103,15 +111,16 @@ alias da='date "+%Y-%m-%d %A %T %Z"'
 # TheFuck
 eval $(thefuck --alias)
 
-
 # Python
 alias python='python3'
 alias pip='pip3'
 
 # venv (virtual environment stuff)
 alias ve='python3 -m venv venv'
-alias activateve='source ./venv/bin/activate'
+alias ave='source ./venv/bin/activate'
 
+# QMK
+alias qmk_compile='qmk compile -kb crkbd/rev1 -km gkerr708'
 
 # Git 
 alias ga='git add .'
@@ -358,15 +367,15 @@ up ()
 	cd $d
 }
 
-#Automatically do an ls after each cd
-# cd ()
-# {
-# 	if [ -n "$1" ]; then
-# 		builtin cd "$@" && ls
-# 	else
-# 		builtin cd ~ && ls
-# 	fi
-# }
+# Automatically do an ls after each cd
+cd ()
+{
+	if [ -n "$1" ]; then
+		builtin cd "$@" && ls
+	else
+		builtin cd ~ && ls
+	fi
+}
 
 # Returns the last 2 fields of the working directory
 pwdtail ()
@@ -686,3 +695,7 @@ else
 	echo "can't found the autojump script"
 fi
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
