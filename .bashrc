@@ -70,14 +70,20 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 
 #######################################################
-# GENERAL ALIAS'S
-#######################################################
+# GENERAL ALIAS'S & Gavin's edits
+# #######################################################
+
+
+# Allows the cmake file to work with pylon
+export PYLON_ROOT=/opt/pylon
+export PYLON_INCLUDE=$PYLON_ROOT/include
+export PYLON_LIB=$PYLON_ROOT/lib
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Compile c++ code with g++
+# Compile cpp into the build directory
 alias cmake='cmake -S . -B build && cmake --build build'
 
 # Alias for running a compiled C++ file
@@ -88,10 +94,10 @@ alias cpp='function _run_cpp_file() {
 }; _run_cpp_file'
 
 # Alias to copy the path of the current directory
-alias ydir='echo -n "$(pwd)" | xclip -selection clipboard'
+alias cpdir='echo -n "$(pwd)" | xclip -selection clipboard'
 
 # Alias to copy the path of a specified file
-alias yfile='function _copyfile() { echo -n "$(pwd)/$1" | xclip -selection clipboard; }; _copyfile'
+alias cpfile='function _copyfile() { echo -n "$(pwd)/$1" | xclip -selection clipboard; }; _copyfile'
 
 # C++ configuration
 export LD_LIBRARY_PATH=/opt/pylon/lib:$LD_LIBRARY_PATH
