@@ -115,7 +115,7 @@ alias fdgen='python3  ~/lab/fd-gen/controller/python_fixed/main.py'
 alias da='date "+%Y-%m-%d %A %T %Z"'
 
 # TheFuck
-eval $(thefuck --alias)
+# eval $(thefuck --alias)
 
 # Python
 alias python='python3.10'
