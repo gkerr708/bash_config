@@ -118,11 +118,11 @@ alias da='date "+%Y-%m-%d %A %T %Z"'
 eval $(thefuck --alias)
 
 # Python
-alias python='python3'
-alias pip='pip3'
+alias python='python3.10'
+alias pip='pip3.10'
 
 # venv (virtual environment stuff)
-alias ve='python3 -m venv venv'
+alias ve='python3.10 -m venv venv'
 alias ave='source ./venv/bin/activate'
 
 # QMK
