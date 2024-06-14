@@ -78,13 +78,19 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 export PYLON_ROOT=/opt/pylon
 export PYLON_INCLUDE=$PYLON_ROOT/include
 export PYLON_LIB=$PYLON_ROOT/lib
+export GENICAM_ROOT_V3_1=/opt/pylon/genicam
+export LD_LIBRARY_PATH=$PYLON_ROOT/lib64:$LD_LIBRARY_PATH
+export GENICAM_GENTL64_PATH=$PYLON_ROOT/lib64:$GENICAM_GENTL64_PATH
+export PATH=$PYLON_ROOT/bin:$PATH
+
+
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Compile cpp into the build directory
-alias cmake='cmake -S . -B build && cmake --build build'
+alias cmake_build='cmake -S . -B build && cmake --build build'
 
 # Alias for running a compiled C++ file
 alias cpp='function _run_cpp_file() {
@@ -124,6 +130,7 @@ alias pip='pip3.10'
 # venv (virtual environment stuff)
 alias ve='python3.10 -m venv venv'
 alias ave='source ./venv/bin/activate'
+alias dve='deactivate'
 
 # QMK
 alias qmk_compile='qmk compile -kb crkbd/rev1 -km gkerr708'
@@ -164,12 +171,12 @@ alias bashrc='nvim ~/mybash'
 
 
 # Change directory aliases
-alias home='cd ~'
-alias desk='cd ~/Desktop'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+alias home='cd ~'
+alias desk='cd ~/Desktop'
 
 # cd into the old directory
 alias bd='cd "$OLDPWD"'
