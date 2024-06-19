@@ -168,7 +168,7 @@ alias upgrade='sudo nala upgrade'
 alias nv='nvim .'
 alias nvimconf='nvim ~/.config/nvim'
 alias bashrc='nvim ~/mybash'
-
+alias todo='nvim ~/lab/docs/todo_list/main.tex'
 
 # Change directory aliases
 alias ..='cd ..'
