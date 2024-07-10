@@ -185,8 +185,9 @@ alias bd='cd "$OLDPWD"'
 alias rmd='/bin/rm  --recursive --force --verbose '
 
 # Alias's for multiple directory listing commands
-alias ls='ls -xFh --color=always' # add colors and file type extensions
-alias la='ls -xaFh --color=always' # add colors and file type extensions
+alias ls='eza --icons --group-directories-first --header --color=always --git'
+alias la='eza --icons --group-directories-first --header --color=always --git --all'
+alias ll='eza --icons --long --group-directories-first --header --color=always --git --no-permissions --no-user'
 
 # alias chmod commands
 alias mx='chmod a+x'
