@@ -83,7 +83,8 @@ export LD_LIBRARY_PATH=$PYLON_ROOT/lib64:$LD_LIBRARY_PATH
 export GENICAM_GENTL64_PATH=$PYLON_ROOT/lib64:$GENICAM_GENTL64_PATH
 export PATH=$PYLON_ROOT/bin:$PATH
 
-alias check_lab='/home/kerr/bash_srcipts/pull_lab.sh'
+alias fetch_lab='$HOME/bash_srcipts/fetch_lab.sh'
+alias merge_lab='$HOME/bash_srcipts/merge_lab.sh'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
