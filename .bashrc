@@ -74,6 +74,32 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # #######################################################
 
 
+alias check_lab_repos='$HOME/bash_scripts/check_git_repos.sh'
+echo "Remember to use 'check_lab_repos' or 'check_lab_repos --sync' to check for updates in the lab repos"
+
+# ESP32 - I think this is for the ESP32 development environment
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
+alias idf_port='idf.py -p /dev/ttyUSB0'
+alias monitor_esp='idf.py -p /dev/ttyUSB0 monitor'
+alias flash_esp='idf.py -p /dev/ttyUSB0 flash'
+alias build_esp='idf.py build'
+alias fix_esp='sudo chmod a+rw /dev/ttyUSB0'
+
+# Print help for ESP32 development environment
+esp_help() {
+    echo "ESP32 Development Environment Help"
+    echo "----------------------------------"
+    echo "get_idf                 : Source the ESP-IDF environment variables."
+    echo "idf.py set-target esp32 : Set the target for idf.py to ESP32."
+    echo "idf_port                : Set the default port for idf.py to /dev/ttyUSB0."
+	echo "idf.py menuconfig       : Open the menuconfig for the ESP32 project."
+	echo "build_esp               : Build the ESP32 project using idf.py."
+    echo "flash_esp               : Flash the ESP32 using idf.py on /dev/ttyUSB0."
+    echo "monitor_esp             : Monitor the ESP32 serial output using idf.py on /dev/ttyUSB0."
+    echo "fix_esp                 : Fix the permissions to flash to the ESP32 serial port."
+    echo "idf.py --help           : Display a verbose help message."
+}
+
 # Allows the cmake file to work with pylon
 export PYLON_ROOT=/opt/pylon
 export PYLON_INCLUDE=$PYLON_ROOT/include
@@ -83,12 +109,12 @@ export LD_LIBRARY_PATH=$PYLON_ROOT/lib64:$LD_LIBRARY_PATH
 export GENICAM_GENTL64_PATH=$PYLON_ROOT/lib64:$GENICAM_GENTL64_PATH
 export PATH=$PYLON_ROOT/bin:$PATH
 
-alias check_lab_repos='$HOME/bash_scripts/check_git_repos.sh'
-echo "Remember to use 'check_lab_repos' or 'check_lab_repos --sync' to check for updates in the lab repos"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+alias todo='cd ~/lab/docs/todo_list/ && nvim ~/lab/docs/todo_list/main.tex'
 
 # Compile cpp into the build directory
 alias cmake_build='cmake -S . -B build && cmake --build build'
@@ -112,12 +138,6 @@ export LD_LIBRARY_PATH=/opt/pylon/lib:$LD_LIBRARY_PATH
 # Edit this .bashrc file
 alias bashrc='nvim ~/.bashrc'
 
-# Show help for this .bashrc file
-alias hlp='less ~/.bashrc_help'
-
-# Runs the main df-gen script
-alias fdgen='python3  ~/lab/fd-gen/controller/python_fixed/main.py'
-
 # alias to show the date
 alias da='date "+%Y-%m-%d %A %T %Z"'
 
@@ -128,7 +148,7 @@ alias da='date "+%Y-%m-%d %A %T %Z"'
 alias python='python3.10'
 alias pip='pip3.10'
 
-# Virtual environment
+# venv (virtual environment stuff)
 alias pt='poetry'
 alias ve='python3.10 -m venv venv'
 alias ave='source ./venv/bin/activate'
@@ -146,7 +166,7 @@ alias gf='git fetch'
 alias gm='git merge'
 
 #alias gl='git log --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n""          %C(white)%s%C(reset)%n""          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)"'
-alias gl='git log --graph --all --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset) %C(auto)%C(bold yellow)%d%C(reset)"'
+alias gl='git log --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset) %C(auto)%C(bold yellow)%d%C(reset)"'
 #alias gl1='git log --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%D%C(reset)"'
 #alias gl2='git log --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset) %C(auto)%d%C(reset)"'
 #alias gl2='git log --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n""          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)"'
@@ -170,7 +190,7 @@ alias upgrade='sudo nala upgrade'
 alias nv='nvim .'
 alias nvimconf='nvim ~/.config/nvim'
 alias bashrc='nvim ~/mybash'
-alias todo='nvim ~/lab/docs/todo_list/main.tex'
+
 
 # Change directory aliases
 alias ..='cd ..'
@@ -715,3 +735,12 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+
+
+# To use OpenFOAM please add
+. /opt/openfoam11/etc/bashrc
+# To your ~/.bashrc
+
+
