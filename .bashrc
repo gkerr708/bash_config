@@ -254,6 +254,13 @@ alias kssh="kitty +kitten ssh"
 # SPECIAL FUNCTIONS
 #######################################################
 
+# Not currently working. It does a weird thing where it starts the shell but can't run the bash file
+fd_gen() {
+    cd ~/lab/fd-gen/
+	poetry shell
+    ./scripts/run_script.sh
+}
+
 # Use the best version of pico installed
 edit ()
 {
